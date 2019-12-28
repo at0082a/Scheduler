@@ -9,7 +9,6 @@ import Button from "components/Button";
 import DayList from "components/DayList";
 import DayListItem from "components/DayListItem";
 
-
 const days = [
   {
     id: 1,
@@ -25,7 +24,7 @@ const days = [
     id: 3,
     name: "Wednesday",
     spots: 0,
-  },
+  }
 ];
 
 storiesOf("Button", module)
@@ -59,5 +58,9 @@ storiesOf("Button", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
   })
-  .add("Monday", () => <DayList key={days.id} days={days} day="Monday" setDay={action("setDay")} /> )
-  .add("Tuesday", () => <DayList key={days.id}  days={days} day="Tuesday" setDay={action("setDay")} /> )
+  .add("Monday", () => (
+    <DayList days={days} day={"Monday"} setDay={action("setDay")} />
+  ))
+  .add("Tuesday", () => (
+    <DayList days={days} day={"Tuesday"} setDay={action("setDay")} />
+  ));
