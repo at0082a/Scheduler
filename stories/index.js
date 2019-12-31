@@ -17,6 +17,7 @@ import Show from "components/Appointments/show";
 import Confirm from "components/Appointments/confirm";
 import Status from "components/Appointments/status";
 import Error from "components/Appointments/error";
+import Form from "components/Appointments/form";
 
 const days = [
   {
@@ -162,4 +163,20 @@ storiesOf("Button", module)
       message="Could not Delete Appointment" 
       onClose={action("Close")}
     />
+  )
+  .add("EditForm", () => 
+    <Form 
+      name="Student Name"
+      interviewers={interviewers}
+      interviewer={interviewer.id}
+      onSave={action("Save")}
+      onCancel={action("Cancel")}
+    /> 
+  )
+  .add("CreateForm", () => 
+    <Form 
+      interviewers={interviewers}
+      onSave={action("Save")}
+      onCancel={action("Cancel")}
+    /> 
   )
