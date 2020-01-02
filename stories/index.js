@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { storiesOf } from "@storybook/react";
 import { action, configureActions } from "@storybook/addon-actions";
@@ -141,6 +141,22 @@ storiesOf("Button", module)
   })
   .add("Appointment", () => <Appointment />)
   .add("Appointment with Time", () => <Appointment time="12pm" />)
+  .add("Appointment Empty", () => (
+    <Fragment>
+      <Appointment id={1} time="12pm" />
+      <Appointment id="last" time="1pm" />
+    </Fragment>
+  ))
+  .add("Appointment Booked", () => (
+    <Fragment>
+      <Appointment
+        id={1}
+        time="12pm"
+        interview={{ student: "Lydia Miller-Jones", interviewer }}
+      />
+      <Appointment id="last" time="1pm" />
+    </Fragment>
+  ))
   .add("Header", () => <Header time="12pm"/>)
   .add("Empty", () => <Empty onAdd={action("setAppointment")}/>)
   .add("Show", () => 
@@ -166,9 +182,9 @@ storiesOf("Button", module)
   )
   .add("EditForm", () => 
     <Form 
-      name="Student Name"
+      name="Alex Tilatti"
       interviewers={interviewers}
-      interviewer={interviewer.id}
+      interviewer={4}
       onSave={action("Save")}
       onCancel={action("Cancel")}
     /> 
@@ -180,3 +196,4 @@ storiesOf("Button", module)
       onCancel={action("Cancel")}
     /> 
   )
+  
